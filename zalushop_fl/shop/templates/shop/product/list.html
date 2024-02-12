@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог продукции{% endblock %}
+
+{% block content %}
+  <!-- Обёртка grid-container для применения стилей сетки -->
+  <div class="grid-container"> <!-- Измененный класс -->
+    {% for product in products %}
+      <div class="product-card">
+        <!-- Блок с изображением -->
+        <div class="product-image">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%;">
+        </div>
+
+        <!-- Блок с описанием и ценой -->
+        <div class="product-info">
+          <h2 class="product-name">{{ product.name }}</h2>
+          <p class="product-price">{{ product.price }} руб.</p>
+          <p>{{ product.description }}</p>
+          <a href="{% url 'product_detail' product.id product.slug %}" class="btn">Подробнее</a>
+        </div>
+      </div>
+      {% empty %}
+        <p>Нет доступных продуктов.</p>
+      {% endfor %}
+
+  </div> <!-- Закрытие grid-container -->
+{% endblock content %}
