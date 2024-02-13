@@ -9,31 +9,46 @@ html, body {
     height: 100%;
 }
 
-
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background: #f5f5f5;
     display: flex;
     flex-direction: column;
-     }
-
+}
 
 main {
     flex: 1 0 auto; 
     padding-bottom: 50px; 
-    }
+}
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    flex: 1; /* это позволит контейнеру растягиваться и занимать все доступное пространство */
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 40px; 
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 75px; 
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 }
 
 header nav {
-    background: #333;
+    background: #000000;
     color: #fff;
     padding: 10px 0;
 }
@@ -66,14 +81,14 @@ header nav ul li a {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background: #333;
+    background: #000000;
     color: #fff;
     text-decoration: none;
     margin-top: 20px;
 }
 
 footer {
-    background: #333;
+    background: #000000;
     color: #ffffff;
     text-align: center;
     flex-shrink: 0;
@@ -86,25 +101,33 @@ footer {
     gap: 20px; 
     padding: 20px; 
 }
-
-
 .product-card {
-    display: flex;
+    flex: 0 0 auto;
+    width: 280px; 
+    margin: 20px;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid #ccc;
-    background-color: #fff; 
-    margin-bottom: 20px; 
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+    .product-card {
+        margin: 10px;
+        width: auto; 
+    }
+}
 
-.product-image {
+.product-image img {
+    display: block;
     width: 100%;
-    max-height: 250px; 
-    object-fit: cover;
-    margin-bottom: 15px; 
+    height: auto;
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px;
 }
-
 
 .product-info {
     padding: 10px;
@@ -112,11 +135,19 @@ footer {
     overflow: auto; 
 }
 
-
-.product-name {
+.product-name, .product-price {
     margin: 10px 0;
 }
 
 .product-price {
     font-weight: bold;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px; 
 }
